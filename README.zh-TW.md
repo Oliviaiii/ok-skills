@@ -48,7 +48,7 @@ clone 後，倉庫會位於 `~/.agents/skills/ok-skills`，其內部目錄已符
   ...
 ```
 
-Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 開始，然後複製或合併到 Claude Code 的 `CLAUDE.md` 或 Codex 的 `AGENTS.md`。它內建中文優先、KISS、最新文件/原始碼檢查、多 agent 優先、預設啟用 `caveman` / `planning-with-files` / `karpathy-guidelines`、嚴格 TypeScript 約束和 context-mode 路由規則。復用前請按專案編輯 `语言要求` 小節；`其他注意项` 是專案本地設定，可按需編輯。
+Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENTS.md) 開始，然後複製或合併到 Claude Code 的 `CLAUDE.md` 或 Codex 的 `AGENTS.md`。它內建中文優先、KISS、最新文件/原始碼檢查、多 agent 優先、預設啟用 `planning-with-files` / `karpathy-guidelines`、嚴格 TypeScript 約束和 context-mode 路由規則。復用前請按專案編輯 `语言要求` 小節；`其他注意项` 是專案本地設定，可按需編輯。
 
 接著在 `AGENTS.md` 裡加入最小觸發規則，或把同樣的 skill 觸發規則合併進 `CLAUDE.md` / `AGENTS.md`：
 
@@ -72,8 +72,10 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 
 - [find-docs](find-docs/SKILL.md)：專注於最新文件查詢的 Context7 CLI 工作流。
 - [exa-search](exa-search/SKILL.md)：使用 Exa 進行網頁、程式碼與公司調研。
+- [reverse-engineer-anything](reverse-engineer-anything/SKILL.md)： 當原始碼無法說明已發布應用程式或二進位檔的行為時，使用 REA 的 CLI/MCP 蒐集證據並比較版本。
 - [get-api-docs](get-api-docs/SKILL.md)：撰寫第三方 API / SDK 程式碼前先抓取當前文件。
 - [find-skills](find-skills/SKILL.md)：當使用者提出能力需求時，先檢查是否已有現成 skill 可用。
+- [ax](ax/SKILL.md)：AI 時代的 curl — 抓取頁面、發現結構、結構化擷取資料，取代 curl + 臨時解析腳本。
 
 ### 規劃與提示工程
 
@@ -81,13 +83,14 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 - [product-decision-agent](product-decision-agent/SKILL.md)：中文優先的產品決策 Agent，用於診斷核心阻塞、需求優先級、成長、指標、營運與跨團隊推進。
 - [autoresearch](autoresearch/SKILL.md)：以明確目標、度量、驗證迴圈和保留/丟棄門禁驅動自主迭代。
 - [diagnosing-bugs](diagnosing-bugs/SKILL.md)：面向疑難 bug 與效能回歸的嚴格診斷迴圈。
-- [grilling](grilling/SKILL.md)：用於直接 grill 會話 的一次一題訪談循環。
+- [grilling](grilling/SKILL.md)：用於直接 grill 會話的設計樹訪談循環。
 - [teach](teach/SKILL.md): 透過 mission、resources、lessons 與 learning records 維護持續教學 workspace。
-- [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.
+- [domain-modeling](domain-modeling/SKILL.md): build and sharpen project domain terminology, `GLOSSARY.md`, and ADRs.
 - [codebase-design](codebase-design/SKILL.md): shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.
 - [improve-codebase-architecture](improve-codebase-architecture/SKILL.md)：找出能提升 locality、leverage、可測試性與 AI 可導覽性的架構 deepening 機會。
 - [prototype](prototype/SKILL.md): 建立一次性邏輯或 UI 原型，快速回答設計問題。
 - [karpathy-guidelines](karpathy-guidelines/SKILL.md)：減少過度複雜、隱藏假設與不可驗證改動的編碼行為準則。
+- [ponytail](ponytail/SKILL.md)：遵循 YAGNI，重用現有程式碼，優先標準函式庫與平台原生能力，減少過度設計；支援 lite、full、ultra 三種模式。
 - [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)：將測試中的 `as` 型別斷言遷移到 `@total-typescript/shoehorn`。
 - [tdd](tdd/SKILL.md)：功能、修復、重構或行為變更前執行 test-first red-green-refactor。
 
@@ -103,7 +106,6 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 - [ai-elements](ai-elements/SKILL.md)：為 `ai-elements` 元件庫建立 AI 對話介面元件。
 - [huashu-design](huashu-design/SKILL.md)：用 HTML 交付高保真原型、互動 Demo、投影片、動畫、設計變體、影片匯出與設計評審。
 - [imagegen-frontend-web](imagegen-frontend-web/SKILL.md)：為前端頁面生成高級設計參考圖，每個 section 一張橫向圖。
-- [gpt-taste](gpt-taste/SKILL.md)：建構 AIDA 結構、GSAP 動效豐富、隨機化版面的高級前端頁面。
 - [better-icons](better-icons/SKILL.md)：透過 CLI 或 MCP 搜尋、瀏覽並取得 200+ Iconify 圖示庫中的 SVG 圖示。
 
 ### 工具與內容製作
@@ -131,26 +133,29 @@ Claude Code 或 Codex 的全域指令可以從 [`CLAUDE_AGENTS.md`](CLAUDE_AGENT
 | [agent-browser](agent-browser/SKILL.md)                             | 面向 AI agents 的瀏覽器自動化：導覽、表單、截圖、資料擷取與網頁測試。                                                                          | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/main/skills/agent-browser)                       |
 | [ai-elements](ai-elements/SKILL.md)                                 | 為 ai-elements 元件庫建立新的 AI 對話介面元件，遵循可組合模式與 shadcn/ui 慣例。                                                               | [vercel/ai-elements](https://github.com/vercel/ai-elements/tree/main/skills/ai-elements)                                       |
 | [autoresearch](autoresearch/SKILL.md)                               | 自主目標導向迭代引擎，覆蓋修改、驗證、保留/丟棄與重複推進工作流。                                                                          | [uditgoenka/autoresearch](https://github.com/uditgoenka/autoresearch/tree/master/.agents/skills/autoresearch)                  |
+| [ax](ax/SKILL.md)                                                   | AI 時代的 curl：抓取 URL、發現頁面結構、從 HTML 結構化擷取資料，無需臨時解析腳本。                                                                                                                          | [yusukebe/ax](https://github.com/yusukebe/ax/tree/main/skills/ax)                                                             |
+
 | [better-icons](better-icons/SKILL.md)                               | 透過 CLI 或 MCP 工具搜尋 200+ Iconify 圖示庫並取得 SVG 圖示。                                                                                  | [better-auth/better-icons](https://github.com/better-auth/better-icons/tree/main/skills)                                       |
 | [bopomofo-rescue](bopomofo-rescue/SKILL.md) | 把忘記切換輸入法、用注音鍵盤打出的英數亂碼還原成中文，例如 su3cl3a8 → 你好嗎。 | [Oliviaiii/bopomofo-rescue](https://github.com/Oliviaiii/bopomofo-rescue) |
 | [kimi-webbridge](kimi-webbridge/SKILL.md)                           | 透過本機守護行程控制使用者的真實瀏覽器，用於導覽、表單填寫、截圖、頁面讀取和登入狀態工作階段。                                                | [install.sh](https://cdn.kimi.com/webbridge/install.sh)                                                             |
 | [browser-trace](browser-trace/SKILL.md)                             | 擷取瀏覽器自動化除錯所需的 CDP trace、截圖與 DOM dump。                                                                                    | [browserbase/skills](https://github.com/browserbase/skills/tree/main/skills/browser-trace)                                     |
-| [caveman](caveman/SKILL.md)                                         | 用「穴居人」式極簡表達壓縮回覆 tokens，同時保留完整技術準確性，並支援多段強度。                                                                | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/tree/main/skills/caveman)                                            |
 | [diagnosing-bugs](diagnosing-bugs/SKILL.md)                                   | 面向疑難 bug 與效能回歸的嚴格診斷迴圈。                                                                                     | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs)                                |
+| [deep-research](deep-research/SKILL.md)                                       | 生成專業深度調研報告，支援多 agent 並行寫作、最新資料錨定、多語言輸出與內建品質檢查。                                      | [hoolulu/deep-research](https://github.com/hoolulu/deep-research/tree/main)                                                        |
 | [find-docs](find-docs/SKILL.md)                                     | 使用 Context7 CLI 查詢最新文件、API 參考與程式碼範例。                                                                                         | [upstash/context7](https://github.com/upstash/context7/tree/master/skills/find-docs)                                           |
 | [exa-search](exa-search/SKILL.md)                                   | 使用 Exa 進行網頁、程式碼與公司調研。                                                                                                          | 自製                                                                                                                           |
+| [reverse-engineer-anything](reverse-engineer-anything/SKILL.md) | 當原始碼無法說明已發布應用程式或二進位檔的行為時，使用 REA 的 CLI/MCP 蒐集證據並比較版本。 | [morluto/rea](https://github.com/morluto/rea/tree/main/.agents/skills/reverse-engineer-anything) |
 | [find-skills](find-skills/SKILL.md)                                 | 當使用者需要特定能力時，協助發現既有技能。                                                                                                     | [vercel-labs/skills](https://github.com/vercel-labs/skills/tree/main/skills/find-skills)                                       |
 | [huashu-design](huashu-design/SKILL.md)                           | 用 HTML 建立高保真原型、互動演示、投影片、動畫、設計變體、影片匯出與設計評審。                                                                | [alchaincyf/huashu-design](https://github.com/alchaincyf/huashu-design)                                                       |
 | [imagegen-frontend-web](imagegen-frontend-web/SKILL.md) | 為前端頁面生成高級設計參考圖，每個 section 一張橫向圖。 | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/imagegen-frontend-web) |
-| [gpt-taste](gpt-taste/SKILL.md) | 建構 AIDA 結構、GSAP 動效豐富、隨機化版面的高級前端頁面。 | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill/tree/main/skills/gpt-tasteskill) |
 | [get-api-docs](get-api-docs/SKILL.md)                               | 在撰寫第三方 API / SDK 程式碼前先抓取當前文件。                                                                                                | [andrewyng/context-hub](https://github.com/andrewyng/context-hub/tree/main/cli/skills/get-api-docs)                            |
-| [grilling](grilling/SKILL.md)                               | 用於直接 grill 會話 的一次一題訪談循環。                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
+| [grilling](grilling/SKILL.md)                               | 用於直接 grill 會話的設計樹訪談循環。                                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)                                |
 | [teach](teach/SKILL.md) | 透過 mission、resources、lessons 與 learning records 在 workspace 中持續教學。 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) |
-| [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `CONTEXT.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
+| [domain-modeling](domain-modeling/SKILL.md)                   | Build and sharpen project domain terminology, `GLOSSARY.md`, and ADRs.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling)                          |
 | [codebase-design](codebase-design/SKILL.md)                   | Shared deep-module vocabulary for seams, interfaces, leverage, locality, and testability.                                                                                         | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design)                          |
 | [improve-codebase-architecture](improve-codebase-architecture/SKILL.md) | 找出能提升 locality、leverage、可測試性與 AI 可導覽性的架構 deepening 機會。                                                                   | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture)                              |
 | [prototype](prototype/SKILL.md) | 建立一次性邏輯或 UI 原型，快速回答設計問題。 | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) |
 | [karpathy-guidelines](karpathy-guidelines/SKILL.md)                 | 減少過度複雜、隱藏假設與不可驗證改動的編碼行為準則。                                                                                                           | [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills/tree/main/skills/karpathy-guidelines)               |
+| [ponytail](ponytail/SKILL.md) | 遵循 YAGNI，重用現有程式碼，優先標準函式庫與平台原生能力，減少過度設計；支援 lite、full、ultra 三種模式。 | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail) |
 | [migrate-to-shoehorn](migrate-to-shoehorn/SKILL.md)                 | 將測試檔案中的 `as` 型別斷言遷移到 `@total-typescript/shoehorn`。                                                                              | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/misc/migrate-to-shoehorn)                                        |
 | [opencli](opencli/opencli-usage/SKILL.md)                                         | 將網站變成 CLI，重用瀏覽器登入狀態，支援公開 API 存取與 AI 生成適配器。                                                                        | [jackwener/opencli](https://github.com/jackwener/opencli/tree/main/skills)                                                                      |
 | [planning-with-files](planning-with-files/SKILL.md)                 | 使用 `task_plan.md`、`findings.md`、`progress.md` 管理複雜任務。                                                                               | [OthmanAdi/planning-with-files](https://github.com/OthmanAdi/planning-with-files/tree/master/.codex/skills/planning-with-files)   |
